@@ -1,0 +1,198 @@
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-03-29 21:10:20.347520', '2025-03-29 21:10:20.347523') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20250329204953)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250329204953') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCurrents (20250329210319)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "currents" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250329210319') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2025-03-29 14:10:59 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Users/James/.local/share/gem/ruby/3.3.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Users/James/.local/share/gem/ruby/3.3.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.2ms | Allocations: 367)
+Completed 200 OK in 149ms (Views: 22.7ms | ActiveRecord: 0.0ms | Allocations: 8789)
+
+
+Started GET "/" for ::1 at 2025-03-29 14:11:06 -0700
+Processing by MainController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.6ms | Allocations: 90)
+  Rendered layout layouts/application.html.erb (Duration: 779.1ms | Allocations: 102436)
+Completed 200 OK in 795ms (Views: 786.3ms | ActiveRecord: 0.0ms | Allocations: 103919)
+
+
+Started GET "/" for ::1 at 2025-03-29 14:11:13 -0700
+Processing by MainController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.7ms | Allocations: 90)
+  Rendered layout layouts/application.html.erb (Duration: 28.0ms | Allocations: 15461)
+Completed 200 OK in 71ms (Views: 35.5ms | ActiveRecord: 0.0ms | Allocations: 19697)
+
+
+Started GET "/sign-up" for ::1 at 2025-03-29 14:11:18 -0700
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 23.9ms | Allocations: 3002)
+  Rendered layout layouts/application.html.erb (Duration: 34.0ms | Allocations: 4100)
+Completed 200 OK in 123ms (Views: 39.5ms | ActiveRecord: 2.4ms | Allocations: 18375)
+
+
+Started POST "/sign-up" for ::1 at 2025-03-29 14:11:26 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"user1", "email"=>"user1@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "user1@email.com"], ["username", "user1"], ["password_digest", "[FILTERED]"], ["created_at", "2025-03-29 21:11:27.420872"], ["updated_at", "2025-03-29 21:11:27.420872"]]
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 717ms (ActiveRecord: 3.0ms | Allocations: 9321)
+
+
+Started GET "/" for ::1 at 2025-03-29 14:11:27 -0700
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.0ms | Allocations: 6)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 1101)
+Completed 200 OK in 15ms (Views: 4.6ms | ActiveRecord: 0.1ms | Allocations: 3248)
+
+
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/" for ::1 at 2025-03-29 14:15:04 -0700
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 1.1ms | Allocations: 367)
+  Rendered layout layouts/application.html.erb (Duration: 26.6ms | Allocations: 15777)
+Completed 200 OK in 60ms (Views: 34.1ms | ActiveRecord: 2.0ms | Allocations: 22350)
+
+
+Started GET "/" for ::1 at 2025-03-29 14:16:38 -0700
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 1.4ms | Allocations: 345)
+  Rendered layout layouts/application.html.erb (Duration: 29.2ms | Allocations: 15762)
+Completed 200 OK in 54ms (Views: 36.9ms | ActiveRecord: 2.6ms | Allocations: 22285)
+
+
+Started DELETE "/sign-out" for ::1 at 2025-03-29 14:16:38 -0700
+Processing by SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.1ms | Allocations: 1025)
+
+
+Started GET "/" for ::1 at 2025-03-29 14:16:38 -0700
+Processing by MainController#home as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 1102)
+Completed 200 OK in 8ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 1887)
+
+
+Started GET "/sign-in" for ::1 at 2025-03-29 14:16:44 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 8.2ms | Allocations: 2786)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 2871)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms | Allocations: 3839)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `reset_password_path' for an instance of #<Class:0x000001fb1e481190>):
+    10:     <%= form.password_field :password %>
+    11: </div>
+    12: <div>
+    13:     <%= link_to"Forgot your password?", reset_password_path %>
+    14: </div>
+    15: <div>
+    16:     <%= form.submit "Sign In"%>
+  
+app/views/sessions/new.html.erb:13
+app/views/sessions/new.html.erb:3
+Started GET "/sign-in" for ::1 at 2025-03-29 14:17:11 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 808)
+  Rendered layout layouts/application.html.erb (Duration: 29.1ms | Allocations: 16331)
+Completed 200 OK in 64ms (Views: 36.6ms | ActiveRecord: 1.8ms | Allocations: 21785)
+
+
+Started POST "/sign-in" for ::1 at 2025-03-29 14:17:14 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"user1", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:12:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 2137)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 3226)
+Completed 200 OK in 11ms (Views: 5.3ms | ActiveRecord: 0.2ms | Allocations: 4585)
+
+
+Started POST "/sign-in" for ::1 at 2025-03-29 14:17:18 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "username"=>"user1", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:12:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 186ms (ActiveRecord: 0.1ms | Allocations: 1147)
+
+
+Started GET "/" for ::1 at 2025-03-29 14:17:18 -0700
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 1.1ms | Allocations: 311)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 1407)
+Completed 200 OK in 18ms (Views: 9.5ms | ActiveRecord: 0.1ms | Allocations: 3400)
+
+
+Started DELETE "/sign-out" for ::1 at 2025-03-29 14:17:23 -0700
+Processing by SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.1ms | Allocations: 1000)
+
+
+Started GET "/" for ::1 at 2025-03-29 14:17:24 -0700
+Processing by MainController#home as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 1102)
+Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 1875)
+
+

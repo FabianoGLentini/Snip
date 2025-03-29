@@ -1,0 +1,7 @@
+
+<% if Current.user %>
+<h1>Hello, <%= Current.user.username%></h1>
+<%= button_to "Log out", sign_out_path, method: :delete, turbo: false %>
+<% else %>
+<h1>Hello</h1>
+<% end %>

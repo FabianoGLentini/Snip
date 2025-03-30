@@ -4,6 +4,9 @@ import { Video as VideoType } from "../types/video";
 import { Play, Pause, ChevronUp } from "lucide-react";
 import { formatNumber } from "../utils/formatNumber";
 
+
+
+
 interface VideoPlayerProps {
   video: VideoType;
   isActive: boolean;

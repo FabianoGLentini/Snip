@@ -20,15 +20,7 @@ We learn how to use Google TTS, Gemini API, and GCP for the first time.
 ## What's next for Syllabyte
 We hope to be able to do more voice customization and better explanations on the concepts from the syllabus.
 
-Built With
-flask
-gcp
-gemini
-google
-python
-react
-ruby
-ruby-on-rails
-tts
-typescript
-Try it out
+## Built With
+flask, gcp, gemini, google, python, react, ruby, ruby-on-rails, tts, typescript, Lovable
+
+## Try it out

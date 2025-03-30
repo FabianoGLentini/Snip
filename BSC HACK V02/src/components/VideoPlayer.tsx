@@ -4,6 +4,7 @@ import { Video as VideoType } from "../types/video";
 import { Play, Pause, ChevronUp } from "lucide-react";
 import { formatNumber } from "../utils/formatNumber";
 
+
 interface VideoPlayerProps {
   video: VideoType;
   isActive: boolean;
@@ -11,6 +12,7 @@ interface VideoPlayerProps {
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, isActive }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+
   const [showControls, setShowControls] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -95,11 +97,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, isActive }) => {
       <div className="relative w-[375px] h-[667px] mx-auto bg-black overflow-hidden shadow-xl rounded-2xl border-4 border-shortsizzle-gray">
         <video
           ref={videoRef}
-          src={ "src/components/Test Video.mp4"} /*video.url*/ 
+          src={video.url} /*video.url*/ 
           className="absolute w-full h-full object-cover"
           loop
           playsInline
-          muted
         />
         
         {/* Gradient overlay */}

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   
   delete "/sign-out", to: "sessions#destroy"
 
+  get "/getvids", to: "shorts#video_links"
+
   get "/view", to: "shorts#showvid"
 
   get "/nvid/:id", to: "shorts#nvid"

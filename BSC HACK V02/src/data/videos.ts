@@ -1,80 +1,31 @@
 
 import { Video } from "../types/video";
+import { useState } from "react";
+
+
 
 export const videos: Video[] = [
   {
     id: "1",
-    url: "https://assets.mixkit.co/videos/preview/mixkit-young-woman-waking-up-stretching-and-checking-her-phone-18330-large.mp4",
-    title: "Morning Routine",
-    description: "Start your day right with this quick morning routine #wellness #routine",
-    likes: 1532,
-    comments: 52,
-    shares: 124,
-    author: {
-      name: "Sarah Johnson",
-      username: "@sarahjwellness",
-      avatar: "https://randomuser.me/api/portraits/women/12.jpg",
-      followers: 15200,
-    },
+    url: "http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6OCwicHVyIjoiYmxvYl9pZCJ9fQ==--a50d818784985d66f09f19c29fa0329d4a8a30f5/Assetto%20Corsa%202024.01.19%20-%2021.53.29.02.mp4",
+    
   },
   {
     id: "2",
-    url: "https://assets.mixkit.co/videos/preview/mixkit-friends-with-colored-smoke-bombs-4556-large.mp4",
-    title: "Summer Vibes",
-    description: "Having fun with friends and colored smoke bombs! #summer #friends",
-    likes: 2547,
-    comments: 102,
-    shares: 254,
-    author: {
-      name: "Mike Chen",
-      username: "@miketheexplorer",
-      avatar: "https://randomuser.me/api/portraits/men/22.jpg",
-      followers: 24800,
-    },
+    url: "http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6OSwicHVyIjoiYmxvYl9pZCJ9fQ==--e4c3e7b220b5855a7d0a7d372738af85b5c4bc11/output_video3.mp4",
+    
   },
   {
     id: "3",
-    url: "https://assets.mixkit.co/videos/preview/mixkit-woman-running-through-forest-trees-sunset-33536-large.mp4",
-    title: "Forest Run",
-    description: "Evening run through the beautiful forest #fitness #nature",
-    likes: 987,
-    comments: 41,
-    shares: 76,
-    author: {
-      name: "Emma Fitness",
-      username: "@emma_runs",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-      followers: 9500,
-    },
+    url: "http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTAsInB1ciI6ImJsb2JfaWQifX0=--b4261ae4d63676b7bf0425e81d778d5a1077adb2/output_video6.mp4",
   },
   {
     id: "4",
     url: "https://assets.mixkit.co/videos/preview/mixkit-man-under-multicolored-lights-1237-large.mp4",
-    title: "Neon Nights",
-    description: "Late night vibes with cool lighting effects #nightlife #neon",
-    likes: 3241,
-    comments: 158,
-    shares: 429,
-    author: {
-      name: "DJ Krypto",
-      username: "@dj_krypto",
-      avatar: "https://randomuser.me/api/portraits/men/28.jpg",
-      followers: 42300,
-    },
+    
   },
   {
     id: "5",
     url: "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-traffic-at-night-11-large.mp4",
-    title: "City Lights",
-    description: "Drone footage of downtown at night #city #drone #nightscape",
-    likes: 4712,
-    comments: 203,
-    shares: 587,
-    author: {
-      name: "Urban Explorer",
-      username: "@urban_views",
-      avatar: "https://randomuser.me/api/portraits/men/46.jpg",
-      followers: 35700,
-    },
   }
 ];

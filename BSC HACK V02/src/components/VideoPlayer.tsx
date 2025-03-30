@@ -95,7 +95,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, isActive }) => {
       <div className="relative w-[375px] h-[667px] mx-auto bg-black overflow-hidden shadow-xl rounded-2xl border-4 border-shortsizzle-gray">
         <video
           ref={videoRef}
-          src={video.url}
+          src={ "src/components/Test Video.mp4"} /*video.url*/ 
           className="absolute w-full h-full object-cover"
           loop
           playsInline

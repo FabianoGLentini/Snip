@@ -11,6 +11,7 @@ interface VideoPlayerProps {
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, isActive }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showControls, setShowControls] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -41,6 +42,17 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, isActive }) => {
     };
   }, [isActive]);
 
+  const forceHideControls = () => {
+    if (controlsTimeoutRef.current) {
+      clearTimeout(controlsTimeoutRef.current);
+    }
+    controlsTimeoutRef.current = setTimeout(() => {
+      if (!isHovering) {
+        setShowControls(false);
+      }
+    }, 500);
+  };
+
   const resetControlsTimeout = () => {
     if (controlsTimeoutRef.current) {
       clearTimeout(controlsTimeoutRef.current);
@@ -49,9 +61,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, isActive }) => {
     setShowControls(true);
 
     if (isPlaying) {
-      controlsTimeoutRef.current = setTimeout(() => {
-        setShowControls(false);
-      }, 500);
+      forceHideControls();
     }
   };
 
@@ -59,23 +69,36 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, isActive }) => {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
+        setIsPlaying(false);
       } else {
         videoRef.current.play().catch((e) => {
           console.error("Play failed:", e);
         });
+        setIsPlaying(true);
+        setShowControls(true);
+        forceHideControls();
       }
-      setIsPlaying(!isPlaying);
-      resetControlsTimeout();
     }
   };
 
   const handleVideoPress = () => {
     togglePlayPause();
-    resetControlsTimeout();
   };
 
   const handleMouseMove = () => {
     resetControlsTimeout();
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    setShowControls(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    if (isPlaying) {
+      forceHideControls();
+    }
   };
 
   return (
@@ -103,6 +126,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, isActive }) => {
             e.stopPropagation();
             togglePlayPause();
           }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           {isPlaying ? (
             <Pause className="w-8 h-8 text-white" />

@@ -4,6 +4,7 @@ import { Plus } from "lucide-react";
 
 const AddButton: React.FC = () => {
   const handleAddClick = () => {
+    
     console.log("Add button clicked");
     // Add your functionality here
   };

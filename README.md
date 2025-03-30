@@ -1,4 +1,4 @@
-# README
+# Syllabyte
 
 ## Inspiration
 "What if you could doomscroll your classes?"

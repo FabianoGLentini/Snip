@@ -11,8 +11,8 @@ const Auth = () => {
     <div className="flex min-h-screen items-center justify-center bg-[#1A1A1A] p-4">
       <div className="w-full max-w-md">
         <div className="mb-10 text-center">
-          <h1 className="mb-2 text-3xl font-bold text-gray-200">VideoSimply</h1>
-          <p className="text-gray-400">Experience short videos like never before</p>
+          <h1 className="mb-2 text-3xl font-bold text-gray-200">Syllabyte</h1>
+          <p className="text-gray-400">Big Ideas, Byte-Sized</p>
         </div>
 
         <div className="rounded-2xl bg-[#1A1A1A] shadow-xl">

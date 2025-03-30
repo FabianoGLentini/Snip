@@ -82,14 +82,15 @@ class ShortsController < ApplicationController
     @shorts = Current.user.short
     video_data = {}
     index = 0
-    @shorts.each do |shs|
+    # @shorts.each do |shs|
+    shs = @shorts.last
       if shs.vid.attached?
         shs.vid.each do |sh|
           video_data["url#{index + 1}"] = url_for(sh)
           index = index + 1
         end
       end
-    end
+    # end
     render json: video_data
   end
 

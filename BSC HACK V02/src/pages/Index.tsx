@@ -19,7 +19,7 @@ const Index: React.FC<IndexProps> = ({isLoading}) => {
 
   return (
     <div className="h-screen w-full flex flex-col bg-shortsizzle-dark overflow-hidden">
-      <button onClick={handleSubmit}>Navigate</button>
+      <button onClick={handleSubmit}>Registration</button>
       <Header />
 
       <div className="flex-1 overflow-hidden">

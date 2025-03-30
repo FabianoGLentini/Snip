@@ -1,7 +1,123 @@
-<%= form_with model: @short, local: true do |form| %>
-  <div>
-    <%= form.label :pdf %>
-    <%= form.file_field :pdf %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Upload</title>
+  <style>
+    /* Reset body margin and set a full-screen background */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Container for the upload form */
+    .upload-container {
+      background-color: #1e1e1e;
+      width: 80%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      color: red;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* Heading for the form */
+    .upload-container h1 {
+      margin-bottom: 20px;
+      color: red;
+      font-size: 24px;
+    }
+
+    /* Hidden file input styling */
+    .upload-container input[type="file"] {
+      display: none; /* Hide the default file input */
+    }
+
+    /* Custom button to trigger the file input */
+    .upload-container .file-button {
+      width: 100%;
+      padding: 16px;
+      background-color: red;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-bottom: 10px; /* Adds space between buttons */
+      box-sizing: border-box; /* Ensures padding doesn't affect width */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Hover effect for the button */
+    .upload-container .file-button:hover {
+      background-color: #b30000;
+    }
+
+    /* Submit button styling */
+    .upload-container button {
+      width: 100%;
+      padding: 16px;
+      background-color: red;
+      color: white;
+      border: none;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      box-sizing: border-box; /* Ensures padding doesn't affect width */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Hover effect for the submit button */
+    .upload-container button:hover {
+      background-color: #b30000;
+    }
+
+    /* Responsive styling for mobile devices */
+    @media (max-width: 600px) {
+      .upload-container {
+        width: 90%;
+        padding: 15px;
+      }
+      .upload-container h1 {
+        font-size: 20px;
+      }
+      .upload-container .file-button,
+      .upload-container button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="upload-container">
+    <h1>Upload Your PDF</h1>
+    <%# <form action="/submit-pdf" method="POST" enctype="multipart/form-data">
+      <!-- The file input is hidden -->
+      <input type="file" name="pdf-file" accept=".pdf" id="fileInput" required />
+      <!-- Custom button to trigger the file input -->
+      <button type="button" class="file-button" onclick="document.getElementById('fileInput').click();">
+        Choose PDF File
+      </button>
+      <button type="submit">Submit</button>
+    </form> %>
+    <%= form_with model: @short, local: true do |form| %>
+      <div class="file-button">
+        <%= form.label :pdf, "Choose File", class: "file-button" %>
+        <%= form.file_field :pdf, class: "file-button" %>
+      </div>
+      <%= form.submit "Upload", class: "file-button" %>
+    <% end %>
   </div>
-  <%= form.submit "Upload" %>
-<% end %>
+</body>
+</html>

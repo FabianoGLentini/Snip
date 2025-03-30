@@ -32,24 +32,19 @@ class ShortsController < ApplicationController
     @pdf_text = pdf_text.join("\n\n")
   end
 
-  def send_vids
-    @short = Short.new(document_params)
-    if @short.save
-      Current.user.short << @short
-      redirect_to @short, notice: "PDF uploaded successfully."
-    else
-      render :new
-    end
-  end
-
-  def sendvid
 
   def nvid
     @short = Short.new
+    @id = params[:id]
+    puts "NVID ID"
+    puts params[:id]
   end
 
   def upvid
-    @short = Short.new(vid_params)
+    puts "VIEWING VIDAAA"
+    puts params[:id]
+    @short = Short.find(params[:id])
+    @short.vid.attach(vid_params[:vid])
     if @short.save
       Current.user.short << @short
       redirect_to view_path, notice: "file uploaded successfully."
@@ -62,6 +57,23 @@ class ShortsController < ApplicationController
     if Current.user
       @shorts = Current.user.short
     end
+  end
+
+  def newzip
+    @short = Short.new
+    @id = params[:id]
+
+  end
+
+  def upzip
+    puts "VIEWING ZIPAAA"
+    puts params[:id]
+    @short = Short.find(params[:id])
+        
+  end
+
+  def vvid
+    puts "PUUSHING VID YAY"
   end
 
   private

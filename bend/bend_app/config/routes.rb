@@ -22,11 +22,13 @@ Rails.application.routes.draw do
 
   get "/view", to: "shorts#showvid"
 
-  get "/nvid", to: "shorts#nvid"
+  get "/nvid/:id", to: "shorts#nvid"
 
-  post "/upvid", to: "shorts#upvid"
+  post "/upvid/:id", to: "shorts#upvid"
 
   get "/docs/new", to: "shorts#new", as: :new_short
   post "/docs", to: "shorts#create", as: :shorts
   get "/docs/:id", to: "shorts#show", as: :short
+
+  post "/success", to: "shorts#vvid"
 end

@@ -130,15 +130,15 @@ def generate_video_from_text():
         start += 1
     
     zip_filename = zip_videos(video_files)
-#     url = "https://example.com/api"  
+    url = "http://localhost:3000/success"  
 
-#     data = {
-#         "key1": "value1",
-#         "key2": "value2"
-#     }
+    data = {
+        "key1": "value1",
+        "key2": "value2"
+    }
 
-# # Send the POST request with the data
-#     response = requests.post(url, json=data)
+# Send the POST request with the data
+    response = requests.post(url, json=data)
     
     return send_file(zip_filename, mimetype='application/zip', as_attachment=True, download_name=zip_filename)
 

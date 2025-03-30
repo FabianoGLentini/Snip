@@ -1,26 +1,18 @@
+// src/components/LoadingScreen.tsx
+
 import React from "react";
 
-interface LoadingScreen {
-    isOpen: boolean;
-    onClose: () => void;
-    children: React.ReactNode;
-    title?: string;
-}
+const LoadingScreen: React.FC = () => {
+  return (
+    <div className="h-screen w-full flex flex-col justify-center items-center bg-[#0f0f0f] text-white">
+      <h1 className="text-3xl font-bold mb-4">Importing</h1>
+      <p className="text-sm text-gray-400 mb-8">Loading, please wait...</p>
 
-const LoadingScreen: React.FC<LoadingScreen> = ({ isOpen, onClose, children, title }) => {
-    if (!isOpen) return null;
+      <div className="w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin mb-4"></div>
 
-    return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white rounded-2xl shadow-lg w-full max-w-md p-6 relative">
-                <h2 className="text-xl font-semibold mb-4">Loading</h2>
-                <input type="file" accept="application/loading" className="mb-4" />
-                
-                {title && <h2 className="text-xl font-bold mb-4">{title}</h2>}
-                <div>{children}</div>
-            </div>
-        </div>
-    );
+      <p className="text-xs text-gray-600">May your discovery be fruitfull</p>
+    </div>
+  );
 };
 
 export default LoadingScreen;

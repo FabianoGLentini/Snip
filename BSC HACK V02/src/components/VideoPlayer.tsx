@@ -126,22 +126,23 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, isActive }) => {
       {/* Video info */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[375px] p-4 z-10 pointer-events-none">
         <div className="mb-14">
-          <h2 className="text-white font-bold text-lg">{video.title}</h2>
-          <p className="text-gray-200 text-sm line-clamp-2 mt-1">{video.description}</p>
+          {/* <h2 className="text-white font-bold text-lg">{video.title}</h2> */}
+          {/* <p className="text-gray-200 text-sm line-clamp-2 mt-1">{video.description}</p> */}
           
           <div className="flex items-center mt-3 pointer-events-auto">
-            <img 
+
+            {/* <img 
               src={video.author.avatar} 
               alt={video.author.name} 
               className="w-8 h-8 rounded-full object-cover border border-white"
-            />
+            /> */}
             <div className="ml-2">
-              <p className="text-white font-semibold text-sm">{video.author.name}</p>
-              <p className="text-gray-300 text-xs">{formatNumber(video.author.followers)} followers</p>
+              {/* <p className="text-white font-semibold text-sm">{video.author.name}</p> */}
+              {/* <p className="text-gray-300 text-xs">{formatNumber(video.author.followers)} followers</p> */}
             </div>
-            <button className="ml-auto bg-shortsizzle-red text-white text-sm py-1 px-3 rounded-full">
+            {/* <button className="ml-auto bg-shortsizzle-red text-white text-sm py-1 px-3 rounded-full">
               Follow
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

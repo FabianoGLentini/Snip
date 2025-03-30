@@ -1,0 +1,7 @@
+<%= form_with model: @short, url: "/upvid", local: true do |form| %>
+  <div>
+    <%= form.label :vid %>
+    <%= form.file_field :vid %>
+  </div>
+  <%= form.submit "Upload" %>
+<% end %>

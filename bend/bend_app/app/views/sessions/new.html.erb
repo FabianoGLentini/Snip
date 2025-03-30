@@ -1,0 +1,15 @@
+<h1>Sign In</h1>
+
+<%= form_with model: @user, url: sign_in_path, method: :post, data: { turbo: false } do |form| %>
+<div>
+    <%= form.label :username %>
+    <%= form.text_field :username, placeholder: "username123" %>
+</div>
+<div>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+</div>
+<div>
+    <%= form.submit "Sign In"%>
+</div>
+<% end %>

@@ -19,4 +19,12 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  proxy: {
+    '/api': {
+      target: 'http://localhost:3000', // Backend server URL
+      changeOrigin: true,
+      secure: false, // Set to `true` if the backend uses HTTPS
+      rewrite: (path) => path.replace(/^\/api/, ''), // Removes "/api" prefix before forwarding
+    },
+  },
 }));

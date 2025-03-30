@@ -4,9 +4,11 @@ import { useToast } from "@/components/ui/use-toast";
 import { Eye, EyeOff, User, Mail, Key } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -39,22 +41,46 @@ const RegisterForm = () => {
     setIsLoading(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      
-      toast({
-        title: "Account created!",
-        description: "You have successfully registered an account.",
+      const response = await fetch("http://localhost:3000/sign-up", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: {
+            username: formData.username,
+            email: formData.email,
+            password: formData.password,
+            password_confirmation: formData.confirmPassword,
+          },
+        }),
+        credentials: "include",
       });
-      
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        username: "",
-        password: "",
-        confirmPassword: "",
-      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        toast({
+          title: "Account created!",
+          description: "You have successfully registered an account.",
+        });
+        navigate("/"); 
+  
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          username: "",
+          password: "",
+          confirmPassword: "",
+        });
+      } else {
+        toast({
+          title: "Registration failed",
+          description: data.errors.join(", "),
+          variant: "destructive",
+        });
+      }
     } catch (error) {
       toast({
         title: "Registration failed",
@@ -68,26 +94,6 @@ const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 p-6">
-      <div>
-        <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-gray-300">
-          Full Name
-        </label>
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
-            <User size={18} />
-          </div>
-          <Input
-            id="name"
-            name="name"
-            type="text"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Enter your full name"
-            className="h-12 w-full bg-[#1E293B] pl-10 text-gray-200 placeholder-gray-500 border-none"
-          />
-        </div>
-      </div>
 
       <div>
         <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-300">

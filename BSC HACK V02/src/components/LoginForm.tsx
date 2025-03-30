@@ -26,23 +26,39 @@ const LoginForm = () => {
     setIsLoading(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      
-      // Mock validation
-      if (formData.username === "demo" && formData.password === "password") {
+      const response = await fetch("http://localhost:3000/sign-in", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: {
+            username: formData.username,
+            password: formData.password,
+          },
+        }),
+        credentials: "include", // Ensures cookies (sessions) are sent
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
         toast({
           title: "Welcome back!",
           description: "You have successfully logged in.",
         });
         navigate("/"); // Navigate to home/video feed
       } else {
-        throw new Error("Invalid credentials");
+        toast({
+          title: "Login failed",
+          description: data.errors.join(", "),
+          variant: "destructive",
+        });
       }
     } catch (error) {
       toast({
         title: "Login failed",
-        description: "Please check your username and password.",
+        description: "Something went wrong. Please try again.",
         variant: "destructive",
       });
     } finally {

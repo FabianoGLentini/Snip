@@ -7,7 +7,9 @@
 <br>
 
 <% @shorts.each do |sh| %>
-    <%= link_to "Download PDF", url_for(sh.pdf), target: "_blank" %>
+    <% if sh.pdf.attached? %>
+      <%= link_to "Download PDF", url_for(sh.pdf), target: "_blank" %>
+    <% end %>
 <% end %>
 
 <p><%= @pdf_text %></p>

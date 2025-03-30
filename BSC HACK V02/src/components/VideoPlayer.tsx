@@ -147,7 +147,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, isActive }) => {
         </div>
       </div>
 
-      {/* Swipe up indicator */}
+      Swipe up indicator
       <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 animate-bounce pointer-events-none">
         <ChevronUp className="w-6 h-6 text-white opacity-70" />
         <p className="text-white text-xs opacity-70">Swipe up</p>

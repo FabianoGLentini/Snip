@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-
+from moviemaker import make_videos
 app = Flask(__name__)
 
 @app.route('/postendpoint', methods=['POST'])
@@ -11,6 +11,8 @@ def handle_post():
             'message': 'Data received successfully',
             'received_data': data
         }
+
+        make_videos(data)
         
         # Return a JSON response
         return jsonify(response_data), 200

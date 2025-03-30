@@ -79,13 +79,13 @@ def generate_video(text, count):
     for word in words:
         word_duration = len(word) / 23.6 + 0.1
         
-        text_clip = TextClip(word, fontsize=30, color='white', font='Open Sans')
+        text_clip = TextClip(word, fontsize=30, color='white', font='Impact', stroke_width=1, stroke_color='black')
         x_position = (video.w - text_clip.w) / 2
         y_position = video.h / 2
         
         text_clip = text_clip.set_position((x_position, y_position)).set_start(current_start_time).set_duration(word_duration)
         word_clips.append(text_clip)
-        
+
         current_start_time += word_duration  
     
     final_video = CompositeVideoClip([video] + word_clips)

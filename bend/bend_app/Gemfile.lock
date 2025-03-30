@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    Ascii85 (2.0.1)
     actioncable (7.1.5.1)
       actionpack (= 7.1.5.1)
       activesupport (= 7.1.5.1)
@@ -80,6 +81,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
+    afm (0.2.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
     benchmark (0.4.0)
@@ -108,6 +110,7 @@ GEM
     erubi (1.13.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashery (2.1.2)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
@@ -151,6 +154,12 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.6-x86_64-linux-gnu)
       racc (~> 1.4)
+    pdf-reader (2.14.1)
+      Ascii85 (>= 1.0, < 3.0, != 2.0.0)
+      afm (~> 0.2.1)
+      hashery (~> 2.0)
+      ruby-rc4
+      ttfunk
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -162,6 +171,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.12)
+    rack-cors (2.0.2)
+      rack (>= 2.0.0)
     rack-session (2.1.0)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -205,6 +216,7 @@ GEM
     reline (0.6.0)
       io-console (~> 0.5)
     rexml (3.4.1)
+    ruby-rc4 (0.1.5)
     rubyzip (2.4.1)
     securerandom (0.4.1)
     selenium-webdriver (4.30.1)
@@ -227,6 +239,8 @@ GEM
     stringio (3.1.6)
     thor (1.3.2)
     timeout (0.4.3)
+    ttfunk (1.8.0)
+      bigdecimal (~> 3.1)
     turbo-rails (2.0.13)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
@@ -259,7 +273,9 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  pdf-reader
   puma (>= 5.0)
+  rack-cors
   rails (~> 7.1.5, >= 7.1.5.1)
   selenium-webdriver
   sprockets-rails

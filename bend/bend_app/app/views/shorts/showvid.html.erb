@@ -1,0 +1,7 @@
+<% @shorts.each do |sh| %>
+    <% if sh.vid.attached? %>
+        <% sh.vid.each do |v| %>
+            <%= link_to "Download PDF", url_for(v), target: "_blank" %>
+        <% end %>
+    <% end %>
+<% end %>

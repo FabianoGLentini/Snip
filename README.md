@@ -1,6 +1,6 @@
 # README
 
-##Inspiration
+## Inspiration
 "What if you could doomscroll your classes?"
 
 Inspired by social media apps like TikTok, we leveraged the dopamine gained from scrolling through short form content to make exam reviewing more addicting.

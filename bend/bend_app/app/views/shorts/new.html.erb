@@ -1,0 +1,7 @@
+<%= form_with model: @short, local: true do |form| %>
+  <div>
+    <%= form.label :pdf %>
+    <%= form.file_field :pdf %>
+  </div>
+  <%= form.submit "Upload" %>
+<% end %>

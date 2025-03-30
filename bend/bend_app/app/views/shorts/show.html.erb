@@ -1,0 +1,13 @@
+<p>Uploaded PDF:</p>
+<% if @short.pdf.attached? %>
+  <%= link_to "Download PDF", url_for(@short.pdf), target: "_blank" %>
+<% else %>
+  <p>No PDF uploaded</p>
+<% end %>
+<br>
+
+<% @shorts.each do |sh| %>
+    <%= link_to "Download PDF", url_for(sh.pdf), target: "_blank" %>
+<% end %>
+
+<p><%= @pdf_text %></p>

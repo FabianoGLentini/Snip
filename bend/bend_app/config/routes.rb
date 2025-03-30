@@ -19,4 +19,8 @@ Rails.application.routes.draw do
   post "/sign-in", to: "sessions#create"
   
   delete "/sign-out", to: "sessions#destroy"
+
+  get "/docs/new", to: "shorts#new", as: :new_short
+  post "/docs", to: "shorts#create", as: :shorts
+  get "/docs/:id", to: "shorts#show", as: :short
 end

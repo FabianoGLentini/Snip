@@ -1,24 +1,40 @@
+require 'pdf/reader'
+
 class ShortsController < ApplicationController
   def new
-    @document = Document.new
+    @short = Short.new
   end
 
   def create
-    @document = Document.new(document_params)
-    if @document.save
-      redirect_to @document, notice: "PDF uploaded successfully!"
+    @short = Short.new(document_params)
+    if @short.save
+      Current.user.short << @short
+      redirect_to @short, notice: "PDF uploaded successfully."
     else
       render :new
     end
   end
 
   def show
-    @document = Document.find(params[:id])
+    if Current.user
+      @shorts = Current.user.short
+    end
+    @short = Short.find(params[:id])
+    pdf_text = []
+
+    @short.pdf.open do |tempfile|
+      reader = PDF::Reader.new(tempfile.path)
+      reader.pages.each do |page|
+        pdf_text << page.text
+      end
+    end
+
+    @pdf_text = pdf_text.join("\n\n")
   end
 
   private
 
   def document_params
-    params.require(:document).permit(:file)
+    params.require(:short).permit(:pdf, :title)
   end
 end

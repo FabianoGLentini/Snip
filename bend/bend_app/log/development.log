@@ -196,3 +196,1131 @@ Processing by MainController#home as TURBO_STREAM
 Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 1875)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateShorts (20250329213131)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_50b08cb8cc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_shorts_on_user_id" ON "shorts" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250329213131') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActiveStorageTables (20250330024010)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250330024010') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2025-03-29 19:45:26 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 1.7ms | Allocations: 624)
+Started GET "/docs/new" for ::1 at 2025-03-29 19:45:27 -0700
+  Rendered layout layouts/application.html.erb (Duration: 878.9ms | Allocations: 103416)
+Completed 200 OK in 1137ms (Views: 921.4ms | ActiveRecord: 3.5ms | Allocations: 135855)
+
+
+Processing by ShortsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/new.html.erb within layouts/application
+  Rendered shorts/new.html.erb within layouts/application (Duration: 7.8ms | Allocations: 2278)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 2364)
+Completed 500 Internal Server Error in 130ms (ActiveRecord: 3.1ms | Allocations: 22826)
+
+
+  
+ActionView::Template::Error (undefined method `shorts_path' for an instance of #<Class:0x000001898083a008>):
+    1: <%= form_with model: @short, local: true do |form| %>
+    2:   <div>
+    3:     <%= form.label :pdf %>
+    4:     <%= form.file_field :pdf %>
+  
+app/views/shorts/new.html.erb:1
+Started GET "/docs/new" for ::1 at 2025-03-29 19:45:47 -0700
+  
+ActionController::RoutingError (uninitialized constant DocumentsController):
+  
+Started GET "/docs/new" for ::1 at 2025-03-29 19:45:56 -0700
+Processing by ShortsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/new.html.erb within layouts/application
+  Rendered shorts/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1144)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 1230)
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 6.1ms | Allocations: 15323)
+
+
+  
+ActionView::Template::Error (undefined method `shorts_path' for an instance of #<Class:0x0000018980ec2c68>):
+    1: <%= form_with model: @short, local: true do |form| %>
+    2:   <div>
+    3:     <%= form.label :pdf %>
+    4:     <%= form.file_field :pdf %>
+  
+app/views/shorts/new.html.erb:1
+Started GET "/docs/new" for ::1 at 2025-03-29 19:46:07 -0700
+Processing by ShortsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/new.html.erb within layouts/application
+  Rendered shorts/new.html.erb within layouts/application (Duration: 16.9ms | Allocations: 1794)
+  Rendered layout layouts/application.html.erb (Duration: 46.3ms | Allocations: 17339)
+Completed 200 OK in 100ms (Views: 53.7ms | ActiveRecord: 3.1ms | Allocations: 31471)
+
+
+Started GET "/" for ::1 at 2025-03-29 19:46:11 -0700
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 1.5ms | Allocations: 315)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 1412)
+Completed 200 OK in 18ms (Views: 11.1ms | ActiveRecord: 0.1ms | Allocations: 2712)
+
+
+Started GET "/" for ::1 at 2025-03-29 19:46:13 -0700
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.5ms | Allocations: 128)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 1222)
+Completed 200 OK in 10ms (Views: 5.0ms | ActiveRecord: 0.1ms | Allocations: 2312)
+
+
+Started GET "/" for ::1 at 2025-03-29 19:46:13 -0700
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.4ms | Allocations: 128)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 1222)
+Completed 200 OK in 11ms (Views: 5.2ms | ActiveRecord: 0.1ms | Allocations: 2294)
+
+
+Started DELETE "/sign-out" for ::1 at 2025-03-29 19:46:14 -0700
+Processing by SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.1ms | Allocations: 1099)
+
+
+Started GET "/" for ::1 at 2025-03-29 19:46:14 -0700
+Processing by MainController#home as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 1100)
+Completed 200 OK in 12ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 1873)
+
+
+Started GET "/log-in" for ::1 at 2025-03-29 19:46:19 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/log-in"):
+  
+Started GET "/sign-up" for ::1 at 2025-03-29 19:46:24 -0700
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 1651)
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | Allocations: 2761)
+Completed 200 OK in 24ms (Views: 17.1ms | ActiveRecord: 0.0ms | Allocations: 3722)
+
+
+Started GET "/sign-in" for ::1 at 2025-03-29 19:46:27 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 725)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 1821)
+Completed 200 OK in 32ms (Views: 10.7ms | ActiveRecord: 0.0ms | Allocations: 2744)
+
+
+Started POST "/sign-in" for ::1 at 2025-03-29 19:46:30 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"user1", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:12:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2136)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 3225)
+Completed 200 OK in 11ms (Views: 5.4ms | ActiveRecord: 0.2ms | Allocations: 4499)
+
+
+Started POST "/sign-in" for ::1 at 2025-03-29 19:46:34 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "username"=>"user1", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:12:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 188ms (ActiveRecord: 0.1ms | Allocations: 1147)
+
+
+Started GET "/" for ::1 at 2025-03-29 19:46:34 -0700
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 126)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 1219)
+Completed 200 OK in 10ms (Views: 5.7ms | ActiveRecord: 0.1ms | Allocations: 2294)
+
+
+Started GET "/docs/new" for ::1 at 2025-03-29 19:46:42 -0700
+Processing by ShortsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/new.html.erb within layouts/application
+  Rendered shorts/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 315)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1408)
+Completed 200 OK in 10ms (Views: 5.2ms | ActiveRecord: 0.1ms | Allocations: 2515)
+
+
+Started POST "/docs" for ::1 at 2025-03-29 19:46:45 -0700
+Processing by ShortsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "short"=>{"pdf"=>#<ActionDispatch::Http::UploadedFile:0x00000189fe56c500 @tempfile=#<Tempfile:C:/Users/James/AppData/Local/Temp/RackMultipart20250329-4484-l91xw0.pdf>, @content_type="application/pdf", @original_filename="syllabus2024w2.pdf", @headers="Content-Disposition: form-data; name=\"short[pdf]\"; filename=\"syllabus2024w2.pdf\"\r\nContent-Type: application/pdf\r\n">}, "commit"=>"Upload"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mShort Create (1.7ms)[0m  [1m[32mINSERT INTO "shorts" ("title", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", nil], ["user_id", nil], ["created_at", "2025-03-30 02:46:45.726532"], ["updated_at", "2025-03-30 02:46:45.726532"]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+Completed 500 Internal Server Error in 130ms (ActiveRecord: 2.3ms | Allocations: 17608)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: shorts.user_id):
+  
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-03-30 02:47:35.398515', '2025-03-30 02:47:35.398518') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20250329204953)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250329204953') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateShorts (20250329213131)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_50b08cb8cc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_shorts_on_user_id" ON "shorts" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250329213131') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActiveStorageTables (20250330024010)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250330024010') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2025-03-29 19:47:42 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 1.0ms | Allocations: 275)
+  Rendered layout layouts/application.html.erb (Duration: 72.9ms | Allocations: 35390)
+Completed 200 OK in 210ms (Views: 92.1ms | ActiveRecord: 3.6ms | Allocations: 53151)
+
+
+Started GET "/docs/new" for ::1 at 2025-03-29 19:47:45 -0700
+Processing by ShortsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/new.html.erb within layouts/application
+  Rendered shorts/new.html.erb within layouts/application (Duration: 8.9ms | Allocations: 1508)
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 2606)
+Completed 200 OK in 75ms (Views: 20.5ms | ActiveRecord: 0.6ms | Allocations: 14968)
+
+
+Started POST "/docs" for ::1 at 2025-03-29 19:47:47 -0700
+Processing by ShortsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "short"=>{"pdf"=>#<ActionDispatch::Http::UploadedFile:0x000002b737295658 @tempfile=#<Tempfile:C:/Users/James/AppData/Local/Temp/RackMultipart20250329-3240-wmnw1e.pdf>, @content_type="application/pdf", @original_filename="syllabus2024w2.pdf", @headers="Content-Disposition: form-data; name=\"short[pdf]\"; filename=\"syllabus2024w2.pdf\"\r\nContent-Type: application/pdf\r\n">}, "commit"=>"Upload"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mShort Create (1.4ms)[0m  [1m[32mINSERT INTO "shorts" ("title", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", nil], ["user_id", nil], ["created_at", "2025-03-30 02:47:47.820208"], ["updated_at", "2025-03-30 02:47:47.820208"]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["key", "df22x13seahvr2lehnrydb7x1dji"], ["filename", "syllabus2024w2.pdf"], ["content_type", "application/pdf"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 540046], ["checksum", "enG9WgKgchP9gVsquVYrPg=="], ["created_at", "2025-03-30 02:47:47.984683"]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "pdf"], ["record_type", "Short"], ["record_id", 1], ["blob_id", 1], ["created_at", "2025-03-30 02:47:47.991322"]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mShort Update (0.1ms)[0m  [1m[33mUPDATE "shorts" SET "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["updated_at", "2025-03-30 02:47:47.997660"], ["id", 1]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+[36m  Disk Storage (18.2ms) [0m[32mUploaded file to key: df22x13seahvr2lehnrydb7x1dji (checksum: enG9WgKgchP9gVsquVYrPg==)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Blob Update (6.8ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = ?[0m  [["blob_id", 1]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mShort Update (0.1ms)[0m  [1m[33mUPDATE "shorts" SET "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["updated_at", "2025-03-30 02:47:48.129977"], ["id", 1]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+[ActiveJob] Enqueued ActiveStorage::PreviewImageJob (Job ID: fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885) to Async(default) with arguments: #<GlobalID:0x000002b73950aa08 @uri=#<URI::GID gid://bend-app/ActiveStorage::Blob/1>>, []
+[ActiveJob] ↳ app/controllers/shorts_controller.rb:8:in `create'
+Redirected to http://localhost:3000/docs/1
+Completed 302 Found in 662ms (ActiveRecord: 11.6ms | Allocations: 57793)
+
+
+Started GET "/docs/1" for ::1 at 2025-03-29 19:47:48 -0700
+Processing by ShortsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885] Performing ActiveStorage::PreviewImageJob (Job ID: fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885) from Async(default) enqueued at 2025-03-30T02:47:48.445478500Z with arguments: #<GlobalID:0x000002b73aa26ab8 @uri=#<URI::GID gid://bend-app/ActiveStorage::Blob/1>>, []
+  [1m[36mUser Load (10.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:2
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:3
+  Rendered shorts/show.html.erb within layouts/application (Duration: 21.8ms | Allocations: 2827)
+  Rendered layout layouts/application.html.erb (Duration: 25.9ms | Allocations: 4150)
+Completed 200 OK in 63ms (Views: 28.8ms | ActiveRecord: 20.7ms | Allocations: 8668)
+
+
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885] [36m  Disk Storage (2.3ms) [0m[34mDownloaded file from key: df22x13seahvr2lehnrydb7x1dji[0m
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885] [36m  Disk Storage (206.4ms) [0m[34mPreviewed file from key: df22x13seahvr2lehnrydb7x1dji[0m
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885]   [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = ?[0m  [["blob_id", 1]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885]   [1m[36mShort Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 1]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885]   [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["key", "yg7kj8jfp6dws1wcn79i28tulws5"], ["filename", "syllabus2024w2.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 117559], ["checksum", "0a41jxNFBXJIZ26lsBJITQ=="], ["created_at", "2025-03-30 02:47:48.885311"]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885]   [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "preview_image"], ["record_type", "ActiveStorage::Blob"], ["record_id", 1], ["blob_id", 2], ["created_at", "2025-03-30 02:47:48.887904"]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885]   [1m[36mShort Update (0.1ms)[0m  [1m[33mUPDATE "shorts" SET "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["updated_at", "2025-03-30 02:47:48.881697"], ["id", 1]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885] [36m  Disk Storage (10.4ms) [0m[32mUploaded file to key: yg7kj8jfp6dws1wcn79i28tulws5 (checksum: 0a41jxNFBXJIZ26lsBJITQ==)[0m
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885] Enqueued ActiveStorage::AnalyzeJob (Job ID: f1e6d5c8-a32c-4033-8ebb-c86b5116eb3c) to Async(default) with arguments: #<GlobalID:0x000002b738748398 @uri=#<URI::GID gid://bend-app/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885]   [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 2], ["variation_digest", "A/slVdJFi1ZpFpf42uoHHZilpjw="], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885] [36m  Disk Storage (1.8ms) [0m[34mDownloaded file from key: yg7kj8jfp6dws1wcn79i28tulws5[0m
+[ActiveJob] [ActiveStorage::PreviewImageJob] [fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885] Error performing ActiveStorage::PreviewImageJob (Job ID: fd07cab6-1efb-4c0c-ba8d-b6c6f3fe9885) from Async(default) in 466.93ms: LoadError (Generating image variants require the image_processing gem. Please add `gem 'image_processing', '~> 1.2'` to your Gemfile.):
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/lib/active_storage/transformers/image_processing_transformer.rb:6:in `rescue in <main>'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/lib/active_storage/transformers/image_processing_transformer.rb:3:in `<main>'
+C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `require'
+C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `block (2 levels) in replace_require'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/bootsnap-1.18.4/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/zeitwerk-2.7.2/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variation.rb:85:in `transformer'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variation.rb:58:in `block in transform'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/notifications.rb:206:in `block in instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/notifications.rb:206:in `instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variation.rb:57:in `transform'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variant_with_record.rb:49:in `block in transform_blob'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/lib/active_storage/downloader.rb:15:in `block in open'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/lib/active_storage/downloader.rb:24:in `open_tempfile'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/lib/active_storage/downloader.rb:12:in `open'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/lib/active_storage/service.rb:92:in `open'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/blob.rb:290:in `open'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variant_with_record.rb:48:in `transform_blob'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variant_with_record.rb:44:in `process'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variant_with_record.rb:19:in `processed'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/preview.rb:112:in `variant'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/preview.rb:54:in `processed'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/jobs/active_storage/preview_image_job.rb:10:in `perform'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/execution.rb:68:in `block in _perform_job'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/i18n-1.14.7/lib/i18n.rb:353:in `with_locale'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:130:in `instance_exec'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/core_ext/time/zones.rb:65:in `use_zone'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:130:in `instance_exec'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:141:in `run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/execution.rb:67:in `_perform_job'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/instrumentation.rb:32:in `_perform_job'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/execution.rb:51:in `perform_now'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/instrumentation.rb:26:in `block in perform_now'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activerecord-7.1.5.1/lib/active_record/railties/job_runtime.rb:13:in `block in instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/instrumentation.rb:40:in `block in instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/notifications.rb:206:in `block in instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/notifications.rb:206:in `instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/instrumentation.rb:39:in `instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activerecord-7.1.5.1/lib/active_record/railties/job_runtime.rb:11:in `instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/instrumentation.rb:26:in `perform_now'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/logging.rb:18:in `block in perform_now'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/tagged_logging.rb:139:in `block in tagged'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/tagged_logging.rb:39:in `tagged'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/tagged_logging.rb:139:in `tagged'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/broadcast_logger.rb:241:in `method_missing'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/logging.rb:25:in `tag_logger'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/logging.rb:18:in `perform_now'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/execution.rb:29:in `block in execute'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/railtie.rb:67:in `block (4 levels) in <class:Railtie>'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/reloader.rb:77:in `block in wrap'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/execution_wrapper.rb:92:in `wrap'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/reloader.rb:74:in `wrap'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/railtie.rb:66:in `block (3 levels) in <class:Railtie>'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:130:in `instance_exec'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:141:in `run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/execution.rb:27:in `execute'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/concurrent-ruby-1.3.5/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:359:in `run_task'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/concurrent-ruby-1.3.5/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:350:in `block (3 levels) in create_worker'
+<internal:kernel>:187:in `loop'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/concurrent-ruby-1.3.5/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:341:in `block (2 levels) in create_worker'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/concurrent-ruby-1.3.5/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:340:in `catch'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/concurrent-ruby-1.3.5/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:340:in `block in create_worker'
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e6d5c8-a32c-4033-8ebb-c86b5116eb3c]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e6d5c8-a32c-4033-8ebb-c86b5116eb3c] Performing ActiveStorage::AnalyzeJob (Job ID: f1e6d5c8-a32c-4033-8ebb-c86b5116eb3c) from Async(default) enqueued at 2025-03-30T02:47:48.916721000Z with arguments: #<GlobalID:0x000002b735b84720 @uri=#<URI::GID gid://bend-app/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e6d5c8-a32c-4033-8ebb-c86b5116eb3c] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e6d5c8-a32c-4033-8ebb-c86b5116eb3c]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e6d5c8-a32c-4033-8ebb-c86b5116eb3c]   [1m[36mActiveStorage::Blob Update (2.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e6d5c8-a32c-4033-8ebb-c86b5116eb3c]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = ?[0m  [["blob_id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e6d5c8-a32c-4033-8ebb-c86b5116eb3c]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ?[0m  [["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e6d5c8-a32c-4033-8ebb-c86b5116eb3c]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e6d5c8-a32c-4033-8ebb-c86b5116eb3c] Performed ActiveStorage::AnalyzeJob (Job ID: f1e6d5c8-a32c-4033-8ebb-c86b5116eb3c) from Async(default) in 21.07ms
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MSwicHVyIjoiYmxvYl9pZCJ9fQ==--c13acbef8f64cabc4c67d1776289fc2a8e72c81c/syllabus2024w2.pdf" for ::1 at 2025-03-29 19:47:49 -0700
+Processing by ActiveStorage::Blobs::RedirectController#show as PDF
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MSwicHVyIjoiYmxvYl9pZCJ9fQ==--c13acbef8f64cabc4c67d1776289fc2a8e72c81c", "filename"=>"syllabus2024w2"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (2.3ms) [0m[34mGenerated URL for file at key: df22x13seahvr2lehnrydb7x1dji (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJkZjIyeDEzc2VhaHZyMmxlaG5yeWRiN3gxZGppIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwic3lsbGFidXMyMDI0dzIucGRmXCI7IGZpbGVuYW1lKj1VVEYtOCcnc3lsbGFidXMyMDI0dzIucGRmIiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24vcGRmIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0wMy0zMFQwMjo1Mjo0OS43MDFaIiwicHVyIjoiYmxvYl9rZXkifX0=--91379081ed4d3f5095857e635aaccb978aebd3a0/syllabus2024w2.pdf)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJkZjIyeDEzc2VhaHZyMmxlaG5yeWRiN3gxZGppIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwic3lsbGFidXMyMDI0dzIucGRmXCI7IGZpbGVuYW1lKj1VVEYtOCcnc3lsbGFidXMyMDI0dzIucGRmIiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24vcGRmIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0wMy0zMFQwMjo1Mjo0OS43MDFaIiwicHVyIjoiYmxvYl9rZXkifX0=--91379081ed4d3f5095857e635aaccb978aebd3a0/syllabus2024w2.pdf
+Completed 302 Found in 21ms (ActiveRecord: 0.1ms | Allocations: 2404)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJkZjIyeDEzc2VhaHZyMmxlaG5yeWRiN3gxZGppIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwic3lsbGFidXMyMDI0dzIucGRmXCI7IGZpbGVuYW1lKj1VVEYtOCcnc3lsbGFidXMyMDI0dzIucGRmIiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24vcGRmIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0wMy0zMFQwMjo1Mjo0OS43MDFaIiwicHVyIjoiYmxvYl9rZXkifX0=--91379081ed4d3f5095857e635aaccb978aebd3a0/syllabus2024w2.pdf" for ::1 at 2025-03-29 19:47:49 -0700
+Processing by ActiveStorage::DiskController#show as PDF
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"syllabus2024w2"}
+Completed 200 OK in 4ms (ActiveRecord: 0.0ms | Allocations: 270)
+
+
+Started GET "/docs/1" for ::1 at 2025-03-29 19:51:35 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 3.0ms | Allocations: 3897)
+
+
+  
+NoMethodError (undefined method `shorts' for nil):
+  
+app/controllers/shorts_controller.rb:17:in `show'
+Started GET "/docs/1" for ::1 at 2025-03-29 19:51:50 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 3.0ms | Allocations: 3929)
+
+
+  
+NoMethodError (undefined method `short' for nil):
+  
+app/controllers/shorts_controller.rb:17:in `show'
+Started GET "/docs/1" for ::1 at 2025-03-29 19:51:51 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.1ms | Allocations: 1313)
+
+
+  
+NoMethodError (undefined method `short' for nil):
+  
+app/controllers/shorts_controller.rb:17:in `show'
+Started GET "/docs/1" for ::1 at 2025-03-29 19:51:53 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms | Allocations: 1313)
+
+
+  
+NoMethodError (undefined method `short' for nil):
+  
+app/controllers/shorts_controller.rb:17:in `show'
+Started GET "/docs/1" for ::1 at 2025-03-29 19:52:33 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 2.7ms | Allocations: 3866)
+
+
+  
+NoMethodError (undefined method `id' for nil):
+  
+app/controllers/shorts_controller.rb:17:in `show'
+Started GET "/" for ::1 at 2025-03-29 19:52:42 -0700
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.9ms | Allocations: 165)
+  Rendered layout layouts/application.html.erb (Duration: 33.8ms | Allocations: 15741)
+Completed 200 OK in 49ms (Views: 41.8ms | ActiveRecord: 0.1ms | Allocations: 17429)
+
+
+Started GET "/" for ::1 at 2025-03-29 19:52:44 -0700
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1103)
+Completed 200 OK in 11ms (Views: 5.3ms | ActiveRecord: 0.1ms | Allocations: 2160)
+
+
+Started GET "/sign-in" for ::1 at 2025-03-29 19:52:47 -0700
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1050)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 2147)
+Completed 200 OK in 28ms (Views: 12.9ms | ActiveRecord: 0.3ms | Allocations: 7184)
+
+
+Started POST "/sign-in" for ::1 at 2025-03-29 19:52:50 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"user1", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:12:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 2136)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 3226)
+Completed 200 OK in 12ms (Views: 5.4ms | ActiveRecord: 0.2ms | Allocations: 4826)
+
+
+Started POST "/sign-in" for ::1 at 2025-03-29 19:52:54 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "username"=>"user1", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:12:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2120)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 3224)
+Completed 200 OK in 14ms (Views: 7.8ms | ActiveRecord: 0.2ms | Allocations: 4734)
+
+
+Started GET "/sign-up" for ::1 at 2025-03-29 19:52:57 -0700
+Processing by RegistrationsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1283)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 2379)
+Completed 200 OK in 18ms (Views: 11.0ms | ActiveRecord: 0.1ms | Allocations: 3671)
+
+
+Started POST "/sign-up" for ::1 at 2025-03-29 19:53:06 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"user1", "email"=>"user@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "user@email.com"], ["username", "user1"], ["password_digest", "[FILTERED]"], ["created_at", "2025-03-30 02:53:06.826370"], ["updated_at", "2025-03-30 02:53:06.826370"]]
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 195ms (ActiveRecord: 2.8ms | Allocations: 3661)
+
+
+Started GET "/" for ::1 at 2025-03-29 19:53:06 -0700
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.8ms | Allocations: 153)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 1249)
+Completed 200 OK in 11ms (Views: 5.5ms | ActiveRecord: 0.1ms | Allocations: 2355)
+
+
+Started GET "/docs/new" for ::1 at 2025-03-29 19:53:10 -0700
+Processing by ShortsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/new.html.erb within layouts/application
+  Rendered shorts/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 540)
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 1637)
+Completed 200 OK in 162ms (Views: 22.4ms | ActiveRecord: 0.4ms | Allocations: 15697)
+
+
+Started POST "/docs" for ::1 at 2025-03-29 19:53:13 -0700
+Processing by ShortsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "short"=>{"pdf"=>#<ActionDispatch::Http::UploadedFile:0x000002b73729e578 @tempfile=#<Tempfile:C:/Users/James/AppData/Local/Temp/RackMultipart20250329-3240-vzihx0.pdf>, @content_type="application/pdf", @original_filename="syllabus2024w2.pdf", @headers="Content-Disposition: form-data; name=\"short[pdf]\"; filename=\"syllabus2024w2.pdf\"\r\nContent-Type: application/pdf\r\n">}, "commit"=>"Upload"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mShort Create (1.2ms)[0m  [1m[32mINSERT INTO "shorts" ("title", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", nil], ["user_id", nil], ["created_at", "2025-03-30 02:53:13.614402"], ["updated_at", "2025-03-30 02:53:13.614402"]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Blob Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["key", "xmnqdzmpt75xhbv0aaiquyc7f1mn"], ["filename", "syllabus2024w2.pdf"], ["content_type", "application/pdf"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 540046], ["checksum", "enG9WgKgchP9gVsquVYrPg=="], ["created_at", "2025-03-30 02:53:13.630129"]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "pdf"], ["record_type", "Short"], ["record_id", 2], ["blob_id", 3], ["created_at", "2025-03-30 02:53:13.632182"]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mShort Update (0.1ms)[0m  [1m[33mUPDATE "shorts" SET "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["updated_at", "2025-03-30 02:53:13.634160"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+[36m  Disk Storage (18.6ms) [0m[32mUploaded file to key: xmnqdzmpt75xhbv0aaiquyc7f1mn (checksum: enG9WgKgchP9gVsquVYrPg==)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Blob Update (1.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = ?[0m  [["blob_id", 3]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mShort Update (0.1ms)[0m  [1m[33mUPDATE "shorts" SET "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["updated_at", "2025-03-30 02:53:13.665861"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:8:in `create'
+[ActiveJob] Enqueued ActiveStorage::PreviewImageJob (Job ID: 2631e307-9095-4ffe-bbff-40751cf099e1) to Async(default) with arguments: #<GlobalID:0x000002b73dd08e90 @uri=#<URI::GID gid://bend-app/ActiveStorage::Blob/3>>, []
+[ActiveJob] ↳ app/controllers/shorts_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:9:in `create'
+  [1m[36mShort Update (1.4ms)[0m  [1m[33mUPDATE "shorts" SET "user_id" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["user_id", 1], ["updated_at", "2025-03-30 02:53:13.675974"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:9:in `create'
+Redirected to http://localhost:3000/docs/2
+Completed 302 Found in 97ms (ActiveRecord: 6.0ms | Allocations: 29532)
+
+
+Started GET "/docs/2" for ::1 at 2025-03-29 19:53:13 -0700
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1] Performing ActiveStorage::PreviewImageJob (Job ID: 2631e307-9095-4ffe-bbff-40751cf099e1) from Async(default) enqueued at 2025-03-30T02:53:13.673628700Z with arguments: #<GlobalID:0x000002b735d9db88 @uri=#<URI::GID gid://bend-app/ActiveStorage::Blob/3>>, []
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1] [36m  Disk Storage (2.0ms) [0m[34mDownloaded file from key: xmnqdzmpt75xhbv0aaiquyc7f1mn[0m
+Processing by ShortsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (8.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:2
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:3
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/shorts/show.html.erb:8
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:9
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:9
+  Rendered shorts/show.html.erb within layouts/application (Duration: 25.8ms | Allocations: 5002)
+  Rendered layout layouts/application.html.erb (Duration: 29.9ms | Allocations: 6131)
+Completed 200 OK in 50ms (Views: 30.5ms | ActiveRecord: 17.4ms | Allocations: 8664)
+
+
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1] [36m  Disk Storage (173.6ms) [0m[34mPreviewed file from key: xmnqdzmpt75xhbv0aaiquyc7f1mn[0m
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1]   [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = ?[0m  [["blob_id", 3]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1]   [1m[36mShort Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 2]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1]   [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["key", "byqp5dpnic8xr48ny64ke813ba9l"], ["filename", "syllabus2024w2.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 117559], ["checksum", "0a41jxNFBXJIZ26lsBJITQ=="], ["created_at", "2025-03-30 02:53:14.022105"]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1]   [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "preview_image"], ["record_type", "ActiveStorage::Blob"], ["record_id", 3], ["blob_id", 4], ["created_at", "2025-03-30 02:53:14.024473"]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1]   [1m[36mShort Update (0.0ms)[0m  [1m[33mUPDATE "shorts" SET "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["updated_at", "2025-03-30 02:53:14.018999"], ["id", 2]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1] [36m  Disk Storage (10.1ms) [0m[32mUploaded file to key: byqp5dpnic8xr48ny64ke813ba9l (checksum: 0a41jxNFBXJIZ26lsBJITQ==)[0m
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1] Enqueued ActiveStorage::AnalyzeJob (Job ID: f6e5cbce-b340-425d-861d-031d2fa66157) to Async(default) with arguments: #<GlobalID:0x000002b73daa3768 @uri=#<URI::GID gid://bend-app/ActiveStorage::Blob/4>>
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1]   [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 4], ["variation_digest", "A/slVdJFi1ZpFpf42uoHHZilpjw="], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1] [36m  Disk Storage (1.8ms) [0m[34mDownloaded file from key: byqp5dpnic8xr48ny64ke813ba9l[0m
+[ActiveJob] [ActiveStorage::PreviewImageJob] [2631e307-9095-4ffe-bbff-40751cf099e1] Error performing ActiveStorage::PreviewImageJob (Job ID: 2631e307-9095-4ffe-bbff-40751cf099e1) from Async(default) in 307.02ms: LoadError (Generating image variants require the image_processing gem. Please add `gem 'image_processing', '~> 1.2'` to your Gemfile.):
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/lib/active_storage/transformers/image_processing_transformer.rb:6:in `rescue in <main>'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/lib/active_storage/transformers/image_processing_transformer.rb:3:in `<main>'
+C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `require'
+C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `block (2 levels) in replace_require'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/bootsnap-1.18.4/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/zeitwerk-2.7.2/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variation.rb:85:in `transformer'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variation.rb:58:in `block in transform'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/notifications.rb:206:in `block in instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/notifications.rb:206:in `instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variation.rb:57:in `transform'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variant_with_record.rb:49:in `block in transform_blob'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/lib/active_storage/downloader.rb:15:in `block in open'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/lib/active_storage/downloader.rb:24:in `open_tempfile'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/lib/active_storage/downloader.rb:12:in `open'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/lib/active_storage/service.rb:92:in `open'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/blob.rb:290:in `open'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variant_with_record.rb:48:in `transform_blob'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variant_with_record.rb:44:in `process'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/variant_with_record.rb:19:in `processed'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/preview.rb:112:in `variant'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/models/active_storage/preview.rb:54:in `processed'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activestorage-7.1.5.1/app/jobs/active_storage/preview_image_job.rb:10:in `perform'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/execution.rb:68:in `block in _perform_job'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/i18n-1.14.7/lib/i18n.rb:353:in `with_locale'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:130:in `instance_exec'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/core_ext/time/zones.rb:65:in `use_zone'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:130:in `instance_exec'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:141:in `run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/execution.rb:67:in `_perform_job'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/instrumentation.rb:32:in `_perform_job'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/execution.rb:51:in `perform_now'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/instrumentation.rb:26:in `block in perform_now'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activerecord-7.1.5.1/lib/active_record/railties/job_runtime.rb:13:in `block in instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/instrumentation.rb:40:in `block in instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/notifications.rb:206:in `block in instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/notifications.rb:206:in `instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/instrumentation.rb:39:in `instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activerecord-7.1.5.1/lib/active_record/railties/job_runtime.rb:11:in `instrument'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/instrumentation.rb:26:in `perform_now'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/logging.rb:18:in `block in perform_now'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/tagged_logging.rb:139:in `block in tagged'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/tagged_logging.rb:39:in `tagged'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/tagged_logging.rb:139:in `tagged'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/broadcast_logger.rb:241:in `method_missing'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/logging.rb:25:in `tag_logger'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/logging.rb:18:in `perform_now'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/execution.rb:29:in `block in execute'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/railtie.rb:67:in `block (4 levels) in <class:Railtie>'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/reloader.rb:77:in `block in wrap'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/execution_wrapper.rb:92:in `wrap'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/reloader.rb:74:in `wrap'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/railtie.rb:66:in `block (3 levels) in <class:Railtie>'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:130:in `instance_exec'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activesupport-7.1.5.1/lib/active_support/callbacks.rb:141:in `run_callbacks'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/execution.rb:27:in `execute'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/activejob-7.1.5.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/concurrent-ruby-1.3.5/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:359:in `run_task'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/concurrent-ruby-1.3.5/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:350:in `block (3 levels) in create_worker'
+<internal:kernel>:187:in `loop'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/concurrent-ruby-1.3.5/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:341:in `block (2 levels) in create_worker'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/concurrent-ruby-1.3.5/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:340:in `catch'
+C:/Users/James/.local/share/gem/ruby/3.3.0/gems/concurrent-ruby-1.3.5/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:340:in `block in create_worker'
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6e5cbce-b340-425d-861d-031d2fa66157]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6e5cbce-b340-425d-861d-031d2fa66157] Performing ActiveStorage::AnalyzeJob (Job ID: f6e5cbce-b340-425d-861d-031d2fa66157) from Async(default) enqueued at 2025-03-30T02:53:14.043098400Z with arguments: #<GlobalID:0x000002b73dd0e9a8 @uri=#<URI::GID gid://bend-app/ActiveStorage::Blob/4>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6e5cbce-b340-425d-861d-031d2fa66157] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6e5cbce-b340-425d-861d-031d2fa66157]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6e5cbce-b340-425d-861d-031d2fa66157]   [1m[36mActiveStorage::Blob Update (1.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6e5cbce-b340-425d-861d-031d2fa66157]   [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = ?[0m  [["blob_id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6e5cbce-b340-425d-861d-031d2fa66157]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ?[0m  [["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6e5cbce-b340-425d-861d-031d2fa66157]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f6e5cbce-b340-425d-861d-031d2fa66157] Performed ActiveStorage::AnalyzeJob (Job ID: f6e5cbce-b340-425d-861d-031d2fa66157) from Async(default) in 15.98ms
+Started GET "/docs/1" for ::1 at 2025-03-29 19:53:19 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:2
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:3
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/shorts/show.html.erb:8
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:9
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:9
+  Rendered shorts/show.html.erb within layouts/application (Duration: 7.8ms | Allocations: 3246)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 4336)
+Completed 200 OK in 19ms (Views: 12.1ms | ActiveRecord: 0.6ms | Allocations: 5825)
+
+
+Started GET "/docs/1" for ::1 at 2025-03-29 19:53:41 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:20:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:2
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:3
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/shorts/show.html.erb:8
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:9
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:9
+  Rendered shorts/show.html.erb within layouts/application (Duration: 26.4ms | Allocations: 14834)
+  Rendered layout layouts/application.html.erb (Duration: 55.2ms | Allocations: 30397)
+Completed 200 OK in 116ms (Views: 61.6ms | ActiveRecord: 4.7ms | Allocations: 45823)
+
+
+Started GET "/docs/2" for ::1 at 2025-03-29 19:53:44 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:20:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:2
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:3
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/shorts/show.html.erb:8
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:9
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:9
+  Rendered shorts/show.html.erb within layouts/application (Duration: 7.2ms | Allocations: 3108)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 4198)
+Completed 200 OK in 18ms (Views: 11.9ms | ActiveRecord: 0.4ms | Allocations: 5655)
+
+
+Started GET "/docs/new" for ::1 at 2025-03-29 19:53:45 -0700
+Processing by ShortsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/new.html.erb within layouts/application
+  Rendered shorts/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 546)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 1639)
+Completed 200 OK in 13ms (Views: 6.2ms | ActiveRecord: 0.1ms | Allocations: 2818)
+
+
+Started DELETE "/sign-out" for ::1 at 2025-03-29 19:53:46 -0700
+Processing by SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.1ms | Allocations: 1031)
+
+
+Started GET "/" for ::1 at 2025-03-29 19:53:46 -0700
+Processing by MainController#home as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.7ms | Allocations: 161)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 1270)
+Completed 200 OK in 14ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 2245)
+
+
+Started GET "/docs/2" for ::1 at 2025-03-29 19:53:49 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:20:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:2
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:3
+  Rendered shorts/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2375)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 2460)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.2ms | Allocations: 3523)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil):
+     5:   <p>No PDF uploaded</p>
+     6: <% end %>
+     7: 
+     8: <% @shorts.each do |sh| %>
+     9:     <%= link_to "Download PDF", url_for(sh.pdf), target: "_blank" %>
+    10: <% end %>
+  
+app/views/shorts/show.html.erb:8
+Started GET "/docs/1" for ::1 at 2025-03-29 19:53:52 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:20:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:2
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:3
+  Rendered shorts/show.html.erb within layouts/application (Duration: 11.2ms | Allocations: 2361)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 2446)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.3ms | Allocations: 3500)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil):
+     5:   <p>No PDF uploaded</p>
+     6: <% end %>
+     7: 
+     8: <% @shorts.each do |sh| %>
+     9:     <%= link_to "Download PDF", url_for(sh.pdf), target: "_blank" %>
+    10: <% end %>
+  
+app/views/shorts/show.html.erb:8
+Started GET "/docs/1" for ::1 at 2025-03-29 19:54:07 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:22:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:2
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:3
+  Rendered shorts/show.html.erb within layouts/application (Duration: 38.9ms | Allocations: 16580)
+  Rendered layout layouts/application.html.erb (Duration: 39.5ms | Allocations: 16666)
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 4.1ms | Allocations: 23468)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil):
+     5:   <p>No PDF uploaded</p>
+     6: <% end %>
+     7: 
+     8: <% @shorts.each do |sh| %>
+     9:     <%= link_to "Download PDF", url_for(sh.pdf), target: "_blank" %>
+    10: <% end %>
+  
+app/views/shorts/show.html.erb:8
+Started GET "/docs/2" for ::1 at 2025-03-29 19:54:27 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:20:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:2
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:3
+  Rendered shorts/show.html.erb within layouts/application (Duration: 37.4ms | Allocations: 16583)
+  Rendered layout layouts/application.html.erb (Duration: 38.0ms | Allocations: 16669)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 6.0ms | Allocations: 23418)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil):
+     5:   <p>No PDF uploaded</p>
+     6: <% end %>
+     7: 
+     8: <% @shorts.each do |sh| %>
+     9:     <%= link_to "Download PDF", url_for(sh.pdf), target: "_blank" %>
+    10: <% end %>
+  
+app/views/shorts/show.html.erb:8
+Started GET "/" for ::1 at 2025-03-29 19:54:28 -0700
+Processing by MainController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.7ms | Allocations: 161)
+  Rendered layout layouts/application.html.erb (Duration: 28.0ms | Allocations: 15719)
+Completed 200 OK in 38ms (Views: 33.0ms | ActiveRecord: 0.0ms | Allocations: 16630)
+
+
+Started GET "/sign-up" for ::1 at 2025-03-29 19:54:32 -0700
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1274)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 2372)
+Completed 200 OK in 22ms (Views: 10.8ms | ActiveRecord: 0.3ms | Allocations: 7105)
+
+
+Started GET "/sign-in" for ::1 at 2025-03-29 19:54:40 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 726)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 1822)
+Completed 200 OK in 16ms (Views: 10.7ms | ActiveRecord: 0.0ms | Allocations: 2755)
+
+
+Started POST "/sign-in" for ::1 at 2025-03-29 19:54:43 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"user1", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:12:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2121)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 3210)
+Completed 200 OK in 10ms (Views: 5.0ms | ActiveRecord: 0.2ms | Allocations: 4535)
+
+
+Started POST "/sign-in" for ::1 at 2025-03-29 19:54:46 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "username"=>"user1", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:12:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 191ms (ActiveRecord: 3.1ms | Allocations: 1135)
+
+
+Started GET "/" for ::1 at 2025-03-29 19:54:46 -0700
+Processing by MainController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering main/home.html.erb within layouts/application
+  Rendered main/home.html.erb within layouts/application (Duration: 0.4ms | Allocations: 142)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 1250)
+Completed 200 OK in 10ms (Views: 4.8ms | ActiveRecord: 0.1ms | Allocations: 2934)
+
+
+Started GET "/docs/new" for ::1 at 2025-03-29 19:54:52 -0700
+Processing by ShortsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/new.html.erb within layouts/application
+  Rendered shorts/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 531)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 1638)
+Completed 200 OK in 13ms (Views: 5.6ms | ActiveRecord: 0.1ms | Allocations: 2802)
+
+
+Started GET "/docs/2" for ::1 at 2025-03-29 19:54:55 -0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:20:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:2
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:3
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/shorts/show.html.erb:8
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:9
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:9
+  Rendered shorts/show.html.erb within layouts/application (Duration: 9.4ms | Allocations: 3929)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 5021)
+Completed 200 OK in 20ms (Views: 13.5ms | ActiveRecord: 0.6ms | Allocations: 6945)
+
+
+Started GET "/docs/2" for ::1 at 2025-03-29 19:59:10 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `set_current_user'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:22:in `show'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:25:in `show'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:25:in `show'
+[36m  Disk Storage (1.8ms) [0m[34mDownloaded file from key: xmnqdzmpt75xhbv0aaiquyc7f1mn[0m
+  Rendering layout layouts/application.html.erb
+  Rendering shorts/show.html.erb within layouts/application
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/shorts/show.html.erb:9
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Short"], ["name", "pdf"], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:10
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shorts/show.html.erb:10
+  Rendered shorts/show.html.erb within layouts/application (Duration: 6.3ms | Allocations: 3458)
+  Rendered layout layouts/application.html.erb (Duration: 77.8ms | Allocations: 38703)
+Completed 200 OK in 2133ms (Views: 91.0ms | ActiveRecord: 4.3ms | Allocations: 3193012)
+
+

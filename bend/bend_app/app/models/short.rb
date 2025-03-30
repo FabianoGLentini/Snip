@@ -1,4 +1,3 @@
 class Short < ApplicationRecord
-  has_one_attached :file
-  validates :file, presence: true
+  has_one_attached :pdf
 end

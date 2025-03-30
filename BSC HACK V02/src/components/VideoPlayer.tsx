@@ -59,7 +59,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, isActive }) => {
     setShowControls(true);
     controlsTimeoutRef.current = setTimeout(() => {
       setShowControls(false);
-    }, 3000);
+    }, 1000);
   };
 
   const togglePlayPause = () => {

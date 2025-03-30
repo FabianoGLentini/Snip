@@ -26,6 +26,7 @@ const LoginForm = () => {
     setIsLoading(true);
 
     try {
+
       const response = await fetch("http://localhost:3000/sign-in", {
         method: "POST",
         headers: {
@@ -49,6 +50,7 @@ const LoginForm = () => {
         });
         navigate("/"); // Navigate to home/video feed
       } else {
+
         toast({
           title: "Login failed",
           description: data.errors.join(", "),
@@ -58,6 +60,7 @@ const LoginForm = () => {
     } catch (error) {
       toast({
         title: "Login failed",
+
         description: "Something went wrong. Please try again.",
         variant: "destructive",
       });
